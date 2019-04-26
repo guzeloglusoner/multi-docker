@@ -9,7 +9,7 @@ script:
   - docker run gsoner/react-test npm test -- --coverage
 
 
-after_scucess:
+after_success:
   - docker build -t gsoner/mutli-client ./client
   - docker build -t gsoner/mutli-nginx ./nginx
   - docker build -t gsoner/mutli-server ./server
