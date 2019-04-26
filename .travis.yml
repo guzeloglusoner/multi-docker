@@ -9,12 +9,14 @@ script:
   - docker run gsoner/react-test npm test -- --coverage
 
 after_success:
+    # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
   - docker build -t gsoner/mutli-client:latest ./client
   - docker build -t gsoner/mutli-nginx:latest ./nginx
   - docker build -t gsoner/mutli-server:latest ./server
   - docker build -t gsoner/mutli-worker:latest ./worker
-  # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
   # Take those images and push them to docker hub
   - docker push gsoner/multi-client:latest
   - docker push gsoner/multi-nginx:latest
