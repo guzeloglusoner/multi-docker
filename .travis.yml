@@ -18,7 +18,7 @@ after_success:
   - docker build -t gsoner/mutli-worker:latest ./worker
   - docker images
   # Take those images and push them to docker hub
-  - docker push gsoner/multi-client:latest
-  - docker push gsoner/multi-nginx:latest
-  - docker push gsoner/multi-server:latest
-  - docker push gsoner/multi-worker:latest
+  - docker push gsoner/multi-client
+  - docker push gsoner/multi-nginx
+  - docker push gsoner/multi-server
+  - docker push gsoner/multi-worker
