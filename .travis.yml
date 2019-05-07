@@ -22,3 +22,16 @@ after_success:
   - docker push gsoner/multi-nginx
   - docker push gsoner/multi-server
   - docker push gsoner/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-270015325157
+  bucket_patch: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
